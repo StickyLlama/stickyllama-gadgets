@@ -1,0 +1,54 @@
+<Module>
+<ModulePrefs
+title="Simple Table Gadget"
+description="Fun sample spreadsheet gadget."
+author="Google Engineering"
+author_affiliation="Google Inc."
+author_email="visualization.api+spreadsheet@gmail.com"
+screenshot="/ig/modules/spreadsheet.png"
+thumbnail="/ig/modules/spreadsheet-thm.png" > 
+<Require feature="idi"/>
+<Require feature="locked-domain" />
+</ModulePrefs>
+<UserPref name="_table_query_refresh_interval" display_name="Data refresh interval (minutes)" 
+default_value="0" datatype="enum" required="false">
+<EnumValue value="0" display_value="Do not refresh"/>
+<EnumValue value="60" display_value="1"/>
+<EnumValue value="300" display_value="5"/>
+<EnumValue value="1800" display_value="30"/>
+</UserPref>
+<Content type="html"><![CDATA[<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<div id="tablediv" style="overflow: auto;"><img src="http://www.google.com/ig/images/spinner.gif" /></div>
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {packages: ['corechart']});
+    </script>
+    <script type="text/javascript">
+      function drawVisualization() {
+        // Create and populate the data table.
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Austria', 'Bulgaria', 'Denmark', 'Greece'],
+          ['2003',  1336060,    400361,    1001582,   997974],
+          ['2004',  1538156,    366849,    1119450,   941795],
+          ['2005',  1576579,    440514,    993360,    930593],
+          ['2006',  1600652,    434552,    1004163,   897127],
+          ['2007',  1968113,    393032,    979198,    1080887],
+          ['2008',  1901067,    517206,    916965,    1056036]
+        ]);
+      
+        // Create and draw the visualization.
+        new google.visualization.BarChart(document.getElementById('visualization')).
+            draw(data,
+                 {title:"Yearly Coffee Consumption by Country",
+                  width:600, height:400,
+                  vAxis: {title: "Year"},
+                  hAxis: {title: "Cups"}}
+            );
+      }
+      
+
+      google.setOnLoadCallback(drawVisualization);
+    </script>
+]]>
+</Content>
+</Module>
