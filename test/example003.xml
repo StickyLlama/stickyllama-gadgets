@@ -1,0 +1,83 @@
+<Module>
+<ModulePrefs title="Simple Table Gadget" description="Official Google Gadget. A simple table presenting the data of a table query result." author="Google Engineering" author_affiliation="Google Inc." author_email="visualization.api+simple-table@gmail.com" screenshot="https://www.google.com/ig/modules/simple-table.png" thumbnail="https://www.google.com/ig/modules/simple-table-thm.png">
+<Require feature="idi"/>
+<Require feature="locked-domain"/>
+</ModulePrefs>
+<UserPref name="_table_query_url" display_name="Data source url" required="true"/>
+<UserPref name="_table_query_refresh_interval" display_name="Data refresh interval (minutes)" default_value="300" datatype="enum" required="false">
+<EnumValue value="0" display_value="Do not refresh"/>
+<EnumValue value="60" display_value="1"/>
+<EnumValue value="300" display_value="5"/>
+<EnumValue value="1800" display_value="30"/>
+</UserPref>
+<UserPref name="disableHtml" display_name="Disable Html" datatype="bool" default_value="false"/>
+<!--
+
+  This is a sample gadget, that uses the Google Visualization API to read data
+  from a data source, and displays it as an html table.
+  
+-->
+<Content type="html">
+<![CDATA[
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(sendQuery);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Mushrooms', 3],
+          ['Onions', 1],
+          ['Olives', 1],
+          ['Zucchini', 1],
+          ['Pepperoni', 2]
+        ]);
+
+        // Set chart options
+        var options = {'title':'How Much Pizza I Ate Last Night',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    function init() {
+      var container = document.getElementById('chart');
+      sendQuery();
+    }
+
+    function sendQuery() {
+      var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1F81zYTCTDMzu9MxqDVbbIuoRuPSbERhCK7VFvDdu-_w');
+      query.send(handleQueryResponse);
+    }
+
+    function handleQueryResponse(response) {
+      // Default error message handling
+      var gadgetHelper = new google.visualization.GadgetHelper();
+      if (!gadgetHelper.validateResponse(response))
+        return;
+
+      var data = response.getDataTable();
+      var chart = new google.visualization.Table(document.getElementById('chart_div'));
+      chart.draw(data, null);
+    }	  
+	  
+    </script>
+	<div id="chart_div"></div>
+]]>
+</Content>
+</Module>
