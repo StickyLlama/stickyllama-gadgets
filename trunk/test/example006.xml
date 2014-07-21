@@ -62,6 +62,7 @@
 
     function sendQuery() {
       var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1wG3pTkVuolrCFLAQx8-cGTT4EdqW7tnW35pZiyUwT0U/gviz/tq');
+	  query.setQuery('SELECT A, B');
       query.send(handleQueryResponse);
     }
 
