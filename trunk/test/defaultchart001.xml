@@ -77,7 +77,7 @@
           title: 'Support Test',
 		  legend: { position: "none" },
 		  backgroundColor: '#3B3C36',
-		  chartArea: { left:200 } ,
+		  chartArea: { left:150 } ,
 		  colors: ['#CAE00D','#FFA700'],
 		  bar { groupWidth: '95%' }
 		  
