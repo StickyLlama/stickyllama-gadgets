@@ -78,7 +78,8 @@
 		  legend: { position: "none" },
 		  backgroundColor: '#3B3C36',
 		  chartArea: { left: 150 } ,
-		  colors: ['#CAE00D','#FFA700']
+		  colors: ['#CAE00D','#FFA700'],
+		  bar: { groupWidth: '95%' }
         };
 		//	  bar { groupWidth: '95%' }
       var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
