@@ -61,7 +61,7 @@
     }
 
     function sendQuery() {
-      var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1v0rC4E-YTgjLppTa2D62zewl_9Lai8tNNRYCTlt6Zjg/gviz/tq?range=Problem%20Feed!A2:Z22');
+      var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1v0rC4E-YTgjLppTa2D62zewl_9Lai8tNNRYCTlt6Zjg/gviz/tq?range=Problem%20Feed');
 	  query.setQuery('SELECT A, B');
       query.send(handleQueryResponse);
     }
