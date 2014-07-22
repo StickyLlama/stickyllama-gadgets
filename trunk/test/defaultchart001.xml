@@ -80,7 +80,7 @@
 			backgroundColor: '#3B3C36',
 			chartArea: { left: 150 } ,
 			colors: ['#CAE00D','#FFA700'],
-			bar: { groupWidth: '95%' }
+			bar: { groupWidth: '95%' },
 			vAxis: {
 				gridlines: {color: '#F7E7CE'},
 				baselineColor: '#F7E7CE',
