@@ -77,7 +77,7 @@
           title: 'Support Test',
 		  legend: { position: "none" },
 		  backgroundColor: '#3B3C36',
-		  chartArea: { left:100 } 
+		  chartArea: { left:200 } 
         };
 	  // bar { groupWidth: '95%', color: '#CAE00D'}
       var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
