@@ -80,8 +80,8 @@
 		var data = response.getDataTable();
 		// Get user preferences
 		var prefs = new gadgets.Prefs();
-		//var title_string = prefs.getString('title');	
-		var title_string = 'MyTitle';	
+		var title_string = prefs.getString('title_string');	
+		//var title_string = 'MyTitle';	
 	  var options = {
 			'title': title_string,
 			legend: { position: "none" },
