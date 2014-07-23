@@ -66,7 +66,7 @@
 	  gadgetHelper = new google.visualization.GadgetHelper();
       var query = gadgetHelper.createQueryFromPrefs(prefs);	  
 	  //var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1x0U8hgkYtTSIU2C9KilBj8CvzyTtHiPXbczCfPhIiWA/gviz/tq?range=feed!A:B');
-	  query.setQuery('SELECT A, B');
+	  //query.setQuery('SELECT A, B');
       query.send(handleQueryResponse);
     }
 
