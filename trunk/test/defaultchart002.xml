@@ -80,9 +80,10 @@
 		var data = response.getDataTable();
 		// Get user preferences
 		var prefs = new gadgets.Prefs();
-		var title_string = prefs.getString('title');		
+		//var title_string = prefs.getString('title');	
+		var title_string = 'MyTitle';	
 	  var options = {
-			title: title_string,
+			'title': title_string,
 			legend: { position: "none" },
 			backgroundColor: '#3B3C36',
 			chartArea: { left: 120 } ,
