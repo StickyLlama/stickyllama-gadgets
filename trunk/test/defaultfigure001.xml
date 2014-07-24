@@ -111,16 +111,27 @@
         };
 		//	  bar { groupWidth: '95%' }
 		
+    var data2 = new google.visualization.DataTable();
+        data2.addColumn('string', 'Topping');
+        data2.addColumn('number', 'Slices');
+        data2.addRows([
+          ['Mushrooms', 3],
+          ['Onions', 1],
+          ['Olives', 1],
+          ['Zucchini', 1],
+          ['Pepperoni', 2]
+        ]);		
+		
 		//var value = data.getValue(1,0);
 		//var mycolor = 'red';
 		//data.setProperty(0, 1, 'style', 'background-color: '+mycolor+';');
-		data.setProperty(1, 0, 'style', 'background-color: red;');
+		//data.setProperty(1, 0, 'style', 'background-color: red;');
 		//data.setProperties(1,0,{style: 'font-style:bold; font-size:22px;'});
 		//var myoptions = { 'allowHtml': 'true'	};
 		var myoptions = { allowHtml: true };
 		
       var table = new google.visualization.Table(document.getElementById('chart_div'));
-      table.draw(data, null);
+      table.draw(data2, null);
     }	  
 	  
     </script>
