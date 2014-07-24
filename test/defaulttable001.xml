@@ -111,7 +111,7 @@
         };
 		//	  bar { groupWidth: '95%' }
       var table = new google.visualization.Table(document.getElementById('chart_div'));
-      chart.draw(data, options);
+      table.draw(data, options);
     }	  
 	  
     </script>
