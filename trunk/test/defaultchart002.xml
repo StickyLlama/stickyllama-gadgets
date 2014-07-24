@@ -14,6 +14,7 @@
 <UserPref name="background_colour" display_name="Background Colour" default_value="#3B3C36"/>
 <UserPref name="text_colour" display_name="Text Colour" default_value="#F7E7CE"/>
 <UserPref name="bar_colour" display_name="Bar Colour" default_value="#CAE00D"/>
+<UserPref name="chartarea_left" display_name="Width of Bar Description (px)" default_value="120"/>
 <UserPref name="disableHtml" display_name="Disable Html" datatype="bool" default_value="false"/>
 <!--
 
@@ -94,17 +95,17 @@
 			legend: { position: "none" },
 			'backgroundColor': background_colour,
 			chartArea: { left: 120 } ,
-			colors: ['#CAE00D','#FFA700'],
+			colors: [bar_colour,'#FFA700'],
 			bar: { groupWidth: '95%' },
 			vAxis: {
-				gridlines: {color: '#F7E7CE'},
-				baselineColor: '#F7E7CE',
-				textStyle: { color: '#F7E7CE' }
+				gridlines: {color: text_colour},
+				baselineColor: text_colour,
+				textStyle: { color: text_colour }
 			},
 			hAxis: {
-				gridlines: {color: '#F7E7CE'},
-				baselineColor: '#F7E7CE',
-				textStyle: { color: '#F7E7CE' }
+				gridlines: {color: text_colour},
+				baselineColor: text_colour,
+				textStyle: { color: text_colour }
 			}		  
         };
 		//	  bar { groupWidth: '95%' }
