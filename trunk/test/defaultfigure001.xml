@@ -112,7 +112,7 @@
 		//	  bar { groupWidth: '95%' }
 		
 		//var value = data.getValue(1,0);
-		//data.setProperty(0,0,'color',bar_colour);
+		data.setProperty(0,0,"color",bar_colour);
 		//data.setProperties(1,0,{style: 'font-style:bold; font-size:22px;'});
 		
       var table = new google.visualization.Table(document.getElementById('chart_div'));
