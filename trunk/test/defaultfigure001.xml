@@ -114,7 +114,7 @@
 		//var value = data.getValue(1,0);
 		//var mycolor = 'red';
 		//data.setProperty(0, 1, 'style', 'background-color: '+mycolor+';');
-		//data.setProperty(0, 1, 'style', 'background-color: red;');
+		data.setProperty(0, 1, 'style', 'background-color: red;');
 		//data.setProperties(1,0,{style: 'font-style:bold; font-size:22px;'});
 		
       var table = new google.visualization.Table(document.getElementById('chart_div'));
