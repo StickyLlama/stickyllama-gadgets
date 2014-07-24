@@ -127,12 +127,13 @@
 		//data.setProperty(0, 1, 'style', 'background-color: '+mycolor+';');
 		//data.setProperty(1, 0, 'style', 'background-color: red;');
 		data2.setProperty(0, 0, 'style', 'background-color: red;');
+		data.setProperty(0, 0, 'style', 'background-color: red;');
 		//data.setProperties(1,0,{style: 'font-style:bold; font-size:22px;'});
 		//var myoptions = { 'allowHtml': 'true'	};
 		var myoptions = { allowHtml: true };
 		
       var table = new google.visualization.Table(document.getElementById('chart_div'));
-      table.draw(data2, myoptions);
+      table.draw(data, myoptions);
     }	  
 	  
     </script>
