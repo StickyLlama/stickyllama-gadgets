@@ -92,6 +92,7 @@
 		//var title_string = 'MyTitle';	
 	  var options = {
 			'title': title_string,
+			titleTextStyle : { color: text_colour },
 			legend: { position: "none" },
 			'backgroundColor': background_colour,
 			chartArea: { left: 120 } ,
