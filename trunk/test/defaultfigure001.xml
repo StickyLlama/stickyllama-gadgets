@@ -118,7 +118,7 @@
 		//data.setProperties(1,0,{style: 'font-style:bold; font-size:22px;'});
 		
       var table = new google.visualization.Table(document.getElementById('chart_div'));
-      table.draw(data, {allowHtml: true});
+      table.draw(data, null);
     }	  
 	  
     </script>
