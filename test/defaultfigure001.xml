@@ -128,8 +128,8 @@
 		//data.setProperty(1, 0, 'style', 'background-color: red;');
 		data2.setProperty(0, 0, 'style', 'background-color: red;');
 		data.setProperty(0, 0, 'style', 'background-color: '+background_colour+';');
-		data.setProperty(0, 0, 'style', 'font-size:22px;');
-		//data.setProperties(1,0,{style: 'font-style:bold; font-size:22px;'});
+		data.setProperty(0, 0, 'style', 'font-size:72px;');
+		//data.setProperties(1,0,{style: 'font-style:bold; font-size:72px;'});
 		//var myoptions = { 'allowHtml': 'true'	};
 		var myoptions = { allowHtml: true };
 		
