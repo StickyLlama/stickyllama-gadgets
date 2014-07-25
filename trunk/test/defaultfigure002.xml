@@ -151,7 +151,8 @@
       //data.setColumnProperties(0,{style: 'background-color: '+background_colour+'; font-size:96px; text-align:center; color: '+text_colour+';'});
       data.setProperties(0,0,columnProperties);  
 	  data.setTableProperties({style: 'background-color: '+background_colour+';'});
-      var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, width : table_width , height: table_height, sort: 'disable'};
+      var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, width : table_width , height: table_height};
+	  //, sort: 'disable'
       
 		
       var table = new google.visualization.Table(document.getElementById('chart_div'));
