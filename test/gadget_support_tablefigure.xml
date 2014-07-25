@@ -1,0 +1,88 @@
+<Module>
+<ModulePrefs title="Bar Chart Gadget" description="Official Google Gadget. A simple table presenting the data of a table query result." author="Google Engineering" author_affiliation="Google Inc." author_email="visualization.api+simple-table@gmail.com" screenshot="https://www.google.com/ig/modules/simple-table.png" thumbnail="https://www.google.com/ig/modules/simple-table-thm.png">
+<Require feature="idi"/>
+<Require feature="locked-domain"/>
+</ModulePrefs>
+<UserPref name="_table_query_url" display_name="Data source url" required="true"/>
+<UserPref name="_table_query_refresh_interval" display_name="Data refresh interval (minutes)" default_value="300" datatype="enum" required="false">
+<EnumValue value="0" display_value="Do not refresh"/>
+<EnumValue value="60" display_value="1"/>
+<EnumValue value="300" display_value="5"/>
+<EnumValue value="1800" display_value="30"/>
+</UserPref>
+<UserPref name="background_colour" display_name="Background Colour" default_value="#3B3C36"/>
+<UserPref name="text_colour" display_name="Text Colour" default_value="#F7E7CE"/>
+<!--
+
+  This is a sample gadget, that uses the Google Visualization API to read data
+  from a data source, and displays it as an html table.
+  
+-->
+<Content type="html">
+<![CDATA[
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['table']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(sendQuery);
+
+    function sendQuery() {
+	  var prefs = new _IG_Prefs(); // User preferences
+	  gadgetHelper = new google.visualization.GadgetHelper();
+      var query = gadgetHelper.createQueryFromPrefs(prefs);	  
+      query.send(handleQueryResponse);
+    }
+
+    function handleQueryResponse(response) {
+		// Default error message handling
+		var gadgetHelper = new google.visualization.GadgetHelper();
+		if (!gadgetHelper.validateResponse(response))
+			return;
+
+		var data = response.getDataTable();
+		// Get user preferences
+		var prefs = new gadgets.Prefs();
+		var background_colour = prefs.getString('background_colour');	
+		var text_colour = prefs.getString('text_colour');	
+
+		var count_font_size = 96;
+		var table_width = 200;
+		var table_height = 200;
+
+		// Set up CSS styles
+		var cellStyleProperties = 'background-color: '+background_colour+'; text-align:center; color: '+text_colour+';';
+		
+		var fontSizeCell = ' font-size:'+count_font_size +'px;';
+		var fontSizeTitle = ' font-size:'+(count_font_size/3) +'px;';
+		
+		var normalCellStyleProperties = cellStyleProperties + fontSizeCell;
+		var titleCellStyleProperties = cellStyleProperties + fontSizeTitle;
+      
+		// add it to the stlye object
+		var style = document.createElement('style');
+		style.type = 'text/css';
+        style.innerHTML = '.scottformat { '+titleCellStyleProperties +'}';
+		document.getElementsByTagName('head')[0].appendChild(style);
+      
+		var cssClassNames = {headerRow: 'scottformat'};
+      
+		var columnProperties = {style: normalCellStyleProperties };
+      
+		data.setProperties(0,0,columnProperties);  
+		data.setTableProperties({style: 'background-color: '+background_colour+';'});
+		
+		var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, width : table_width , height: table_height, sort: 'event'};
+	    var table = new google.visualization.Table(document.getElementById('chart_div'));
+		
+		table.draw(data, myoptions);
+    }	  
+	  
+    </script>
+	<div id="chart_div" style="width:200; height:200"></div>
+]]>
+</Content>
+</Module>
