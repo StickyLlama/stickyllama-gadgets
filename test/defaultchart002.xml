@@ -115,7 +115,7 @@
     }	  
 	  
     </script>
-	<div id="chart_div"></div>
+	<div id="chart_div" style="height: 300px;"></div>
 ]]>
 </Content>
 </Module>
