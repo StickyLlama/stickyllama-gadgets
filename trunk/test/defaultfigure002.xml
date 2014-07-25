@@ -124,7 +124,7 @@
 		
       var count_font_size = 96;
       var table_width = 200;
-      var table_height = 300;
+      var table_height = 200;
       
       var cellStyleProperties = 'background-color: '+background_colour+'; text-align:center; color: '+text_colour+';';
       var fontSizeCell = ' font-size:'+count_font_size +'px;';
@@ -159,7 +159,7 @@
     }	  
 	  
     </script>
-	<div id="chart_div" style="width:200; height:300"></div>
+	<div id="chart_div" style="width:200; height:200"></div>
 ]]>
 </Content>
 </Module>
