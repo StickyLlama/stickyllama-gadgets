@@ -1,0 +1,95 @@
+<Module>
+<ModulePrefs title="Support Bar Chart Gadget" description="Official Google Gadget. A simple table presenting the data of a table query result." author="Google Engineering" author_affiliation="Google Inc." author_email="visualization.api+simple-table@gmail.com" screenshot="https://www.google.com/ig/modules/simple-table.png" thumbnail="https://www.google.com/ig/modules/simple-table-thm.png">
+<Require feature="idi"/>
+<Require feature="locked-domain"/>
+</ModulePrefs>
+<UserPref name="title_string" display_name="Chart Title" required="true"/>
+<UserPref name="_table_query_url" display_name="Data source url" required="true"/>
+<UserPref name="_table_query_refresh_interval" display_name="Data refresh interval (minutes)" default_value="300" datatype="enum" required="false">
+<EnumValue value="0" display_value="Do not refresh"/>
+<EnumValue value="60" display_value="1"/>
+<EnumValue value="300" display_value="5"/>
+<EnumValue value="1800" display_value="30"/>
+</UserPref>
+<UserPref name="background_colour" display_name="Background Colour" default_value="#3B3C36"/>
+<UserPref name="text_colour" display_name="Text Colour" default_value="#F7E7CE"/>
+<UserPref name="bar_colour" display_name="Bar Colour" default_value="#CAE00D"/>
+<UserPref name="chartarea_left" display_name="Width of Bar Description (px)" default_value="120"/>
+<!--
+
+  This is a sample gadget, that uses the Google Visualization API to read data
+  from a data source, and displays it as an html table.
+  
+-->
+<Content type="html">
+<![CDATA[
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(sendQuery);
+
+    function sendQuery() {
+	  var prefs = new _IG_Prefs(); // User preferences
+	  gadgetHelper = new google.visualization.GadgetHelper();
+      var query = gadgetHelper.createQueryFromPrefs(prefs);	  
+      query.send(handleQueryResponse);
+    }
+
+    function handleQueryResponse(response) {
+		// Default error message handling
+		var gadgetHelper = new google.visualization.GadgetHelper();
+		if (!gadgetHelper.validateResponse(response))
+			return;
+
+		var dataFrom = response.getDataTable();
+		// Get user preferences
+		var prefs = new gadgets.Prefs();
+		var title_string = prefs.getString('title_string');	
+		var background_colour = prefs.getString('background_colour');	
+		var text_colour = prefs.getString('text_colour');	
+		var bar_colour = prefs.getString('bar_colour');	
+
+		// Setup Options
+		var options = {
+			'title': title_string,
+			titleTextStyle : { color: text_colour },
+			legend: { position: "none" },
+			'backgroundColor': background_colour,
+			chartArea: { left: 120 } ,
+			colors: [bar_colour,'#FFA700'],
+			bar: { groupWidth: '95%' },
+			vAxis: {
+				gridlines: {color: text_colour},
+				baselineColor: text_colour,
+				textStyle: { color: text_colour }
+			},
+			hAxis: {
+				gridlines: {color: text_colour},
+				baselineColor: text_colour,
+				textStyle: { color: text_colour }
+			}		  
+        };
+
+		// Copy data into RAG
+		var dataTo = google.visualization.arrayToDataTable([
+			[dataFrom.getColumnLabel(0), dataFrom.getColumnLabel(1), { role: 'style' }],
+			[dataFrom.getValue(0,0), dataFrom.getValue(0,1), 'red'],
+			[dataFrom.getValue(1,0), dataFrom.getValue(1,1), 'orange'],
+			[dataFrom.getValue(2,0), dataFrom.getValue(2,1), 'green']
+			]); 		
+		
+		// Get and Draw Chart
+		var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+		chart.draw(dataTo, options);
+    }	  
+	  
+    </script>
+	<div id="chart_div" style="height: 300px;"></div>
+]]>
+</Content>
+</Module>
