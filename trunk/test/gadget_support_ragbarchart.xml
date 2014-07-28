@@ -78,9 +78,9 @@
 		// Copy data into RAG
 		var dataTo = google.visualization.arrayToDataTable([
 			[dataFrom.getColumnLabel(0), dataFrom.getColumnLabel(1), { role: 'style' }],
-			[dataFrom.getValue(0,0), dataFrom.getValue(0,1), 'red'],
+			[dataFrom.getValue(0,0), dataFrom.getValue(0,1), 'green'],
 			[dataFrom.getValue(1,0), dataFrom.getValue(1,1), 'orange'],
-			[dataFrom.getValue(2,0), dataFrom.getValue(2,1), 'green']
+			[dataFrom.getValue(2,0), dataFrom.getValue(2,1), 'red']
 			]); 		
 		
 		// Get and Draw Chart
