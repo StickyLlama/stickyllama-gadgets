@@ -53,7 +53,7 @@
 		var background_colour = prefs.getString('background_colour');	
 		var text_colour = prefs.getString('text_colour');	
 		var bar_colour = prefs.getString('bar_colour');	
-		var chartarea_left = prefs.getNumber('chartarea_left');	
+		var chartarea_left = prefs.getInt('chartarea_left');	
 
 		// Setup Options
 		var options = {
