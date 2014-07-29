@@ -61,7 +61,7 @@
 			titleTextStyle : { color: text_colour },
 			legend: { position: "none" },
 			'backgroundColor': background_colour,
-			chartArea: { 'left': chartarea_left } ,
+			chartArea: { 'left': 120 } ,
 			colors: [bar_colour,'#FFA700'],
 			bar: { groupWidth: '95%' },
 			vAxis: {
