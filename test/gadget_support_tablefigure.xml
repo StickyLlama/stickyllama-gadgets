@@ -70,6 +70,7 @@
       
 		var cssClassNames = {headerRow: 'scottformat'};
       
+	    var backgroundProps = 'background-color: '+background_colour+';'
 		var columnProperties = {style: normalCellStyleProperties };
       
 		data.setProperties(0,0,columnProperties);  
