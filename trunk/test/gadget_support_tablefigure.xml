@@ -74,7 +74,7 @@
 		var columnProperties = {style: normalCellStyleProperties };
       
 		data.setProperties(0,0,columnProperties);  
-		data.setTableProperties({style: 'background-color: '+background_colour+';'});
+		data.setTableProperties({style: backgroundProps});
 		
 		var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, width : table_width , height: table_height, sort: 'event'};
 	    var table = new google.visualization.Table(document.getElementById('chart_div'));
