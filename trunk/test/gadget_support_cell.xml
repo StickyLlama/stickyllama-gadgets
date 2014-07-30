@@ -46,7 +46,7 @@
 		if (!gadgetHelper.validateResponse(response))
 			return;
 
-		var data = response.getDataTable();
+		var dataFrom = response.getDataTable();
 		// Get user preferences
 		var prefs = new gadgets.Prefs();
 		var title_string = prefs.getString('title_string');	
@@ -85,14 +85,14 @@
 	    var backgroundProps = 'background-color: '+background_colour+';'
 		var columnProperties = {style: normalCellStyleProperties };
       
-		data.setProperties(0,0,columnProperties);  
-		data.setTableProperties({style: backgroundProps});
+		dataTo.setProperties(0,0,columnProperties);  
+		dataTo.setTableProperties({style: backgroundProps});
 		
 		//var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, width : table_width , height: table_height, sort: 'event'};
 		var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, sort: 'event'};
 	    var table = new google.visualization.Table(document.getElementById('chart_div'));
 		
-		table.draw(data, myoptions);
+		table.draw(dataTo, myoptions);
     }	  
 	  
     </script>
