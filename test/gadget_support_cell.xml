@@ -61,7 +61,7 @@
 		// Copy data into RAG
 		var dataTo = google.visualization.arrayToDataTable([
 			[title_string, { role: 'style' }],
-			[dataFrom.getValue(0,0), text_colour],
+			[dataFrom.getValue(0,0), text_colour]
 		]); 		
 
 		
