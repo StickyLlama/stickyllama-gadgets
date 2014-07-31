@@ -78,10 +78,11 @@
 
 		var i = 0;
 		var maxNo = data.getNumberOfRows();
-		for (i = 0; i < max; i++) {
+		//for (i = 0; i < max; i++) {
 		//	var valCell = data.getValue(i,1);
-		  //if ( valCell == "") data.setValue(1, i, 0);
-		}		
+		  //if ( valCell == "") 
+		  data.setValue(1, i, 0);
+		//}		
 		
 		// Get and Draw Chart
 		var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
