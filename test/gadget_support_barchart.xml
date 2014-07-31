@@ -79,7 +79,7 @@
 		var i = 0;
 		var maxNo = data.getNumberOfRows();
 		for (i = 0; i < max; i++) {
-			var valCell = data.getValue(i,1);
+			//var valCell = data.getValue(i,1);
 		  //if ( valCell == "") data.setValue(1, i, 0);
 		}		
 		
