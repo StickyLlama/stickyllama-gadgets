@@ -1,21 +1,21 @@
 <Module>
-<ModulePrefs title="Bar Chart Gadget" description="Official Google Gadget. A simple table presenting the data of a table query result." author="Google Engineering" author_affiliation="Google Inc." author_email="visualization.api+simple-table@gmail.com" screenshot="https://www.google.com/ig/modules/simple-table.png" thumbnail="https://www.google.com/ig/modules/simple-table-thm.png">
+<ModulePrefs title="Support Bar Chart Gadget" description="Official Google Gadget. A simple table presenting the data of a table query result." author="Google Engineering" author_affiliation="Google Inc." author_email="visualization.api+simple-table@gmail.com" screenshot="https://www.google.com/ig/modules/simple-table.png" thumbnail="https://www.google.com/ig/modules/simple-table-thm.png">
 <Require feature="idi"/>
 <Require feature="locked-domain"/>
 </ModulePrefs>
 <UserPref name="title_string" display_name="Chart Title" required="true"/>
 <UserPref name="_table_query_url" display_name="Data source url" required="true"/>
-<UserPref name="_table_query_refresh_interval" display_name="Data refresh interval (minutes)" default_value="300" datatype="enum" required="false">
+<UserPref name="_table_query_refresh_interval" display_name="Data refresh interval (minutes)" default_value="60" datatype="enum" required="false">
 <EnumValue value="0" display_value="Do not refresh"/>
 <EnumValue value="60" display_value="1"/>
 <EnumValue value="300" display_value="5"/>
 <EnumValue value="1800" display_value="30"/>
 </UserPref>
-<UserPref name="background_colour" display_name="Background Colour" default_value="#3B3C36"/>
-<UserPref name="text_colour" display_name="Text Colour" default_value="#F7E7CE"/>
-<UserPref name="bar_colour" display_name="Bar Colour" default_value="#CAE00D"/>
+<UserPref name="background_colour" display_name="Background Colour" default_value="#374140"/>
+<UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
+<UserPref name="bar_colour" display_name="Bar Colour" default_value="#8DDC31"/>
+<UserPref name="height_size" display_name="Height(px)" default_value="300"/>
 <UserPref name="chartarea_left" display_name="Width of Bar Description (px)" default_value="120"/>
-<UserPref name="disableHtml" display_name="Disable Html" datatype="bool" default_value="false"/>
 <!--
 
   This is a sample gadget, that uses the Google Visualization API to read data
@@ -29,49 +29,15 @@
     <script type="text/javascript">
 
       // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['table']});
+      google.load('visualization', '1.0', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
       google.setOnLoadCallback(sendQuery);
 
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-          ['Mushrooms', 3],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
-        ]);
-
-        // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night',
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    function init() {
-      var container = document.getElementById('chart');
-      sendQuery();
-    }
-
     function sendQuery() {
-      //var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1v0rC4E-YTgjLppTa2D62zewl_9Lai8tNNRYCTlt6Zjg/gviz/tq?range=Problem%20Feed!A:B');
 	  var prefs = new _IG_Prefs(); // User preferences
 	  gadgetHelper = new google.visualization.GadgetHelper();
       var query = gadgetHelper.createQueryFromPrefs(prefs);	  
-	  //var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1x0U8hgkYtTSIU2C9KilBj8CvzyTtHiPXbczCfPhIiWA/gviz/tq?range=feed!A:B');
-	  //query.setQuery('SELECT A, B');
       query.send(handleQueryResponse);
     }
 
@@ -88,14 +54,17 @@
 		var background_colour = prefs.getString('background_colour');	
 		var text_colour = prefs.getString('text_colour');	
 		var bar_colour = prefs.getString('bar_colour');	
-		
-		//var title_string = 'MyTitle';	
-	  var options = {
+		var chartarea_left = prefs.getInt('chartarea_left');	
+
+		// Setup Options
+		var options = {
 			'title': title_string,
+			height: height_size,
+			width: '100%',
 			titleTextStyle : { color: text_colour },
 			legend: { position: "none" },
 			'backgroundColor': background_colour,
-			chartArea: { left: 120 } ,
+			chartArea: { left: chartarea_left } ,
 			colors: [bar_colour,'#FFA700'],
 			bar: { groupWidth: '95%' },
 			vAxis: {
@@ -109,32 +78,10 @@
 				textStyle: { color: text_colour }
 			}		  
         };
-		//	  bar { groupWidth: '95%' }
 		
-    var data2 = new google.visualization.DataTable();
-        data2.addColumn('string', 'Topping');
-        data2.addColumn('number', 'Slices');
-        data2.addRows([
-          ['Mushrooms', 3],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
-        ]);		
-		
-		//var value = data.getValue(1,0);
-		//var mycolor = 'red';
-		//data.setProperty(0, 1, 'style', 'background-color: '+mycolor+';');
-		//data.setProperty(1, 0, 'style', 'background-color: red;');
-		data2.setProperty(0, 0, 'style', 'background-color: red;');
-		data.setProperty(0, 0, 'style', 'background-color: '+background_colour+';');
-		data.setProperty(0, 0, 'style', 'font-size:72px;');
-		//data.setProperties(1,0,{style: 'font-style:bold; font-size:72px;'});
-		//var myoptions = { 'allowHtml': 'true'	};
-		var myoptions = { allowHtml: true };
-		
-      var table = new google.visualization.Table(document.getElementById('chart_div'));
-      table.draw(data, myoptions);
+		// Get and Draw Chart
+		var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+		chart.draw(data, options);
     }	  
 	  
     </script>
