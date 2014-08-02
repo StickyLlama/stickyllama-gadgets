@@ -4,14 +4,14 @@
 <Require feature="locked-domain"/>
 </ModulePrefs>
 <UserPref name="_table_query_url" display_name="Data source url" required="true"/>
-<UserPref name="_table_query_refresh_interval" display_name="Data refresh interval (minutes)" default_value="300" datatype="enum" required="false">
+<UserPref name="_table_query_refresh_interval" display_name="Data refresh interval (minutes)" default_value="60" datatype="enum" required="false">
 <EnumValue value="0" display_value="Do not refresh"/>
 <EnumValue value="60" display_value="1"/>
 <EnumValue value="300" display_value="5"/>
 <EnumValue value="1800" display_value="30"/>
 </UserPref>
-<UserPref name="background_colour" display_name="Background Colour" default_value="#3B3C36"/>
-<UserPref name="text_colour" display_name="Text Colour" default_value="#F7E7CE"/>
+<UserPref name="background_colour" display_name="Background Colour" default_value="#374140"/>
+<UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
 <!--
 
   This is a sample gadget, that uses the Google Visualization API to read data
