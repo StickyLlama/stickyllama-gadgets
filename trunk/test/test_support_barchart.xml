@@ -15,7 +15,6 @@
 <UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
 <UserPref name="bar_colour" display_name="Bar Colour" default_value="#8DDC31"/>
 <UserPref name="size_height" display_name="Height(px)" default_value="300"/>
-</UserPref>
 <UserPref name="chartarea_left" display_name="Width of Bar Description (px)" default_value="120"/>
 <!--
 
