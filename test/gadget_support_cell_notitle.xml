@@ -11,7 +11,7 @@
 <EnumValue value="1800" display_value="30"/>
 </UserPref>
 <UserPref name="background_colour" display_name="Background Colour" default_value="#374140"/>
-<UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
+<UserPref name="text_colour" display_name="Text Color" default_value="#D9CB9E"/>
 <UserPref name="cell_font_size" display_name="Cell font size" default_value="36"/>
 <!--
 
