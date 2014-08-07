@@ -15,7 +15,7 @@
 <UserPref name="background_colour" display_name="Background Colour" default_value="#374140"/>
 <UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
 <UserPref name="bar_colour" display_name="Bar Colour" default_value="#8DDC31"/>
-<UserPref name="adj_height" display_name="Height px" default_value="300"/>
+<UserPref name="adj_height" display_name="Heighta px" default_value="300"/>
 <UserPref name="chartarea_left" display_name="Width of Bar Description (px)" default_value="120"/>
 <!--
 
@@ -86,7 +86,7 @@
 		// Get and Draw Chart
 		var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
 		chart.draw(data, options);
-		gadgets.window.adjustHeight(400);
+		gadgets.window.adjustHeight();
 		
     }	  
 	  
