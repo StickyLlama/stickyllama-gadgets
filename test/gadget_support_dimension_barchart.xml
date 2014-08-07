@@ -2,6 +2,7 @@
 <ModulePrefs title="Support Bar Chart Gadget" description="Official Google Gadget. A simple table presenting the data of a table query result." author="Google Engineering" author_affiliation="Google Inc." author_email="visualization.api+simple-table@gmail.com" screenshot="https://www.google.com/ig/modules/simple-table.png" thumbnail="https://www.google.com/ig/modules/simple-table-thm.png">
 <Require feature="idi"/>
 <Require feature="locked-domain"/>
+<Require feature="dynamic-height"/>
 </ModulePrefs>
 <UserPref name="title_string" display_name="Chart Title" required="true"/>
 <UserPref name="_table_query_url" display_name="Data source url" required="true"/>
@@ -80,16 +81,17 @@
         };
 		
 		// Change Size
-		document.getElementById("chart_div").height = "400px";
+		//document.getElementById("chart_div").height = "400px";
 				
 		// Get and Draw Chart
 		var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
 		chart.draw(data, options);
+		gadgets.window.adjustHeight();
 		
     }	  
 	  
     </script>
-	<div id="chart_div" style="height: 400px;"></div>
+	<div id="chart_div"></div>
 ]]>
 </Content>
 </Module>
