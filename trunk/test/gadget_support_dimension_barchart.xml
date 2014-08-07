@@ -89,7 +89,7 @@
     }	  
 	  
     </script>
-	<div id="chart_div" style="height: 300px;"></div>
+	<div id="chart_div" style="height: 400px;"></div>
 ]]>
 </Content>
 </Module>
