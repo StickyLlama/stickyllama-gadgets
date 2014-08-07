@@ -53,7 +53,7 @@
 	
 		// Copy data into Table
 		var dataTo = google.visualization.arrayToDataTable([
-			[dataFrom.getValue(0,0)]
+			[20]
 		]); 		
 
 		
