@@ -80,7 +80,10 @@
         style.innerHTML = '.scottformat { '+titleCellStyleProperties +'}';
 		document.getElementsByTagName('head')[0].appendChild(style);
       
-		var cssClassNames = {headerRow: 'scottformat'};
+		//var cssClassNames = {headerRow: 'scottformat'};
+		var cssClassNames = {headerRow: 'scottformat',
+                	            headerCell: 'scottformat'
+                        	    };
       
 	    var backgroundProps = 'background-color: '+background_colour+';'
 		var columnProperties = {style: normalCellStyleProperties };
