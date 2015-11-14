@@ -50,9 +50,12 @@
 		var text_colour = prefs.getString('text_colour');	
 
 		var count_font_size = 96;
-		var table_width = 200;
-		var table_height = 200;
-
+		//var table_width = 200;
+		//var table_height = 200;
+		var table_width = '100%';
+		var table_height = '100%';
+		
+		
 		// Set up CSS styles
 		var cellStyleProperties = 'background-color: '+background_colour+'; text-align:center; color: '+text_colour+';';
 		
