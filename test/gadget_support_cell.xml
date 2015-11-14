@@ -57,6 +57,8 @@
 
 //		var table_width = 200;
 //		var table_height = 200;
+		var table_width = '100%';
+		var table_height = '100%';
 		
 		// Copy data into RAG
 		var dataTo = google.visualization.arrayToDataTable([
@@ -92,7 +94,8 @@
 		dataTo.setTableProperties({style: backgroundProps});
 		
 		//var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, width : table_width , height: table_height, sort: 'event'};
-		var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, sort: 'event'};
+		var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, width : table_width , height: table_height, sort: 'event'};
+		//var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, sort: 'event'};
 	    var table = new google.visualization.Table(document.getElementById('chart_div'));
 		
 		table.draw(dataTo, myoptions);
