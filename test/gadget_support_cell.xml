@@ -63,7 +63,7 @@
 	
 		// Check for and blank zero
 		var fieldValue = dataFrom.getValue(0,0);
-		if (show_when_zero = 'false' && fieldValue == 0) {
+		if (show_when_zero == 'false' && fieldValue == 0) {
 			text_colour = 	background_colour;
 		}
 		
