@@ -3,7 +3,7 @@
 <Require feature="idi"/>
 <Require feature="locked-domain"/>
 </ModulePrefs>
-<UserPref name="title_string" display_name="Chart Title" required="true"/>
+<UserPref name="title_string" display_name="Chart Title" required="false"/>
 <UserPref name="_table_query_url" display_name="Data source url" required="true"/>
 <UserPref name="_table_query_refresh_interval" display_name="Data refresh interval (minutes)" default_value="60" datatype="enum" required="false">
 <EnumValue value="0" display_value="Do not refresh"/>
@@ -15,6 +15,7 @@
 <UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
 <UserPref name="title_font_size" display_name="Title font size" default_value="72"/>
 <UserPref name="cell_font_size" display_name="Cell font size" default_value="36"/>
+<UserPref name="blank_when_zero" display_name="Show when 0 ?" datatype="bool" default_value="true"/>
 <!--
 
   This is a sample gadget, that uses the Google Visualization API to read data
@@ -54,19 +55,21 @@
 		var text_colour = prefs.getString('text_colour');	
 		var title_font_size = prefs.getInt('title_font_size');
 		var cell_font_size = prefs.getInt('cell_font_size');
+		var blank_when_zero = prefs.getInt('blank_when_zero');
 
-//		var table_width = 200;
-//		var table_height = 200;
+
 		var table_width = '100%';
 		var table_height = '100%';
+	
+		// Check for and blank zero
+		var fieldValue = dataFrom.getValue(0,0);
+		if (blank_when_zero && fieldValue == 0) {
+			text_colour = 	background_colour;
+		}
 		
-		// Copy data into RAG
-		var dataTo = google.visualization.arrayToDataTable([
-			[title_string],
-			[dataFrom.getValue(0,0)]
-		]); 		
+		// Copy data into Cell
+		var dataTo = google.visualization.arrayToDataTable([[title_string],[fieldValue]]); 		
 
-		
 		// Set up CSS styles
 		var cellStyleProperties = 'background-color: '+background_colour+'; text-align:center; color: '+text_colour+';';
 		
@@ -79,24 +82,20 @@
 		// add it to the stlye object
 		var style = document.createElement('style');
 		style.type = 'text/css';
-        style.innerHTML = '.scottformat { '+titleCellStyleProperties +'}';
+        	style.innerHTML = '.scottformat { '+titleCellStyleProperties +'}';
 		document.getElementsByTagName('head')[0].appendChild(style);
       
-		//var cssClassNames = {headerRow: 'scottformat'};
-		var cssClassNames = {headerRow: 'scottformat',
-                	            headerCell: 'scottformat'
-                        	    };
+		var cssClassNames = {headerRow: 'scottformat',headerCell: 'scottformat'};
       
-	    var backgroundProps = 'background-color: '+background_colour+';'
+	    	var backgroundProps = 'background-color: '+background_colour+';'
 		var columnProperties = {style: normalCellStyleProperties };
       
 		dataTo.setProperties(0,0,columnProperties);  
 		dataTo.setTableProperties({style: backgroundProps});
 		
-		//var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, width : table_width , height: table_height, sort: 'event'};
 		var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, width : table_width , height: table_height, sort: 'event'};
-		//var myoptions = { allowHtml: true, 'cssClassNames': cssClassNames, sort: 'event'};
-	    var table = new google.visualization.Table(document.getElementById('chart_div'));
+		
+	    	var table = new google.visualization.Table(document.getElementById('chart_div'));
 		
 		table.draw(dataTo, myoptions);
     }	  
