@@ -1,5 +1,5 @@
 <Module>
-<ModulePrefs title="Support Table Figure Gadget" description="Official Google Gadget. A simple table presenting the data of a table query result." author="Google Engineering" author_affiliation="Google Inc." author_email="visualization.api+simple-table@gmail.com" screenshot="https://www.google.com/ig/modules/simple-table.png" thumbnail="https://www.google.com/ig/modules/simple-table-thm.png">
+<ModulePrefs title="Support Pie Gadget 01" description="Official Google Gadget. A simple table presenting the data of a table query result." author="Google Engineering" author_affiliation="Google Inc." author_email="visualization.api+simple-table@gmail.com" screenshot="https://www.google.com/ig/modules/simple-table.png" thumbnail="https://www.google.com/ig/modules/simple-table-thm.png">
 <Require feature="idi"/>
 <Require feature="locked-domain"/>
 </ModulePrefs>
@@ -13,8 +13,8 @@
 </UserPref>
 <UserPref name="background_colour" display_name="Background Colour" default_value="#374140"/>
 <UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
-<UserPref name="title_font_size" display_name="Title font size" default_value="72"/>
-<UserPref name="cell_font_size" display_name="Cell font size" default_value="36"/>
+<UserPref name="title_font_size" display_name="Title font size" default_value="24"/>
+<UserPref name="cell_font_size" display_name="Cell font size" default_value="16"/>
 <!--
 
   This is a sample gadget, that uses the Google Visualization API to read data
@@ -28,7 +28,7 @@
     <script type="text/javascript">
 
       // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['table']});
+      google.load('visualization', '1.0', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
       google.setOnLoadCallback(sendQuery);
@@ -64,12 +64,12 @@
 		// Set up styles
 		var legendStyle = {textStyle: {color:text_colour,fontSize: cell_font_size}};
 		var titleTextStyle = {color:text_colour,fontSize: title_font_size};
-        var colours_pagedividers = ["58BCFF","8CE62C","FFDA10","FF9D10","F861BA"];
-        var colours_pagedividersextended = ["58BCFF","8CE62C","FFDA10","FF9D10","F861BA","FF6A6A","FFEFDB","FF3030"];
-        var colours_distinctegos = ["9C1F14","531570","195F41","AA1C49","B31593"];
-        var colours_distinctambush = ["3C2A57","B93097","85B930","C1C78F","E63A21"];
-        var colours_distinction = ["C4186B","94FFB8","33C7CC","759E9C","759E9C"];
-        var pieSliceBorderColor = background_colour;
+        	var colours_pagedividers = ["58BCFF","8CE62C","FFDA10","FF9D10","F861BA"];
+        	var colours_pagedividersextended = ["58BCFF","8CE62C","FFDA10","FF9D10","F861BA","FF6A6A","FFEFDB","FF3030"];
+        	var colours_distinctegos = ["9C1F14","531570","195F41","AA1C49","B31593"];
+        	var colours_distinctambush = ["3C2A57","B93097","85B930","C1C78F","E63A21"];
+        	var colours_distinction = ["C4186B","94FFB8","33C7CC","759E9C","759E9C"];
+        	var pieSliceBorderColor = background_colour;
 		
 		var options = {
 			backgroundColor: background_colour,
@@ -89,7 +89,7 @@
     }	  
 	  
     </script>
-	<div id="chart_div"></div>
+	<div id="piechart"></div>
 ]]>
 </Content>
 </Module>
