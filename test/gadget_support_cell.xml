@@ -55,7 +55,7 @@
 		var text_colour = prefs.getString('text_colour');	
 		var title_font_size = prefs.getInt('title_font_size');
 		var cell_font_size = prefs.getInt('cell_font_size');
-		var blank_when_zero = prefs.getInt('blank_when_zero');
+		var show_when_zero = prefs.getInt('show_when_zero');
 
 
 		var table_width = '100%';
