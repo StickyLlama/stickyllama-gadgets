@@ -15,7 +15,7 @@
 <UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
 <UserPref name="title_font_size" display_name="Title font size" default_value="72"/>
 <UserPref name="cell_font_size" display_name="Cell font size" default_value="36"/>
-<UserPref name="blank_when_zero" display_name="Show when 0 ?" datatype="bool" default_value="true"/>
+<UserPref name="show_when_zero" display_name="Show when 0 ?" datatype="bool" default_value="true"/>
 <!--
 
   This is a sample gadget, that uses the Google Visualization API to read data
@@ -63,7 +63,7 @@
 	
 		// Check for and blank zero
 		var fieldValue = dataFrom.getValue(0,0);
-		if (blank_when_zero && fieldValue == 0) {
+		if (show_when_zero = 'false' && fieldValue == 0) {
 			text_colour = 	background_colour;
 		}
 		
