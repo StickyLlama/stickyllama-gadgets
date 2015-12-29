@@ -63,21 +63,24 @@
 	
 		// Check for and blank zero
 		var fieldValue = dataFrom.getValue(0,0);
-		if (!show_when_zero && fieldValue == 0) {
-			text_colour = 	background_colour;
-		}
-		
+
 		// Copy data into Cell
 		var dataTo = google.visualization.arrayToDataTable([[title_string],[fieldValue]]); 		
 
 		// Set up CSS styles
-		var cellStyleProperties = 'background-color: '+background_colour+'; text-align:center; color: '+text_colour+';';
+		var cellStyleProperties = 'background-color: '+background_colour+'; text-align:center;';
 		
 		var fontSizeCell = ' font-size:'+cell_font_size+'px;';
 		var fontSizeTitle = ' font-size:'+title_font_size+'px;';
+
+		var fontColourTitle = ' color: '+text_colour+';';		
+		if (!show_when_zero && fieldValue == 0) {
+			text_colour = 	background_colour;
+		}				
+		var fontColourCell = ' color: '+text_colour+';';
 		
-		var normalCellStyleProperties = cellStyleProperties + fontSizeCell;
-		var titleCellStyleProperties = cellStyleProperties + fontSizeTitle;
+		var normalCellStyleProperties = cellStyleProperties + fontSizeCell + fontColourCell;
+		var titleCellStyleProperties = cellStyleProperties + fontSizeTitle + fontColourTitle;
       
 		// add it to the stlye object
 		var style = document.createElement('style');
