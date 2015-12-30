@@ -12,7 +12,14 @@
 <EnumValue value="1800" display_value="30"/>
 </UserPref>
 <UserPref name="background_colour" display_name="Background Colour" default_value="#374140"/>
-<UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
+<UserPref name="text_colour_selection" display_name="Text Colour" default_value="#D9CB9E" datatype="enum" required="false">
+<EnumValue value="#D9CB9E" display_value="Default"/>
+<EnumValue value="#4DFA90" display_value="Green"/>
+<EnumValue value="#FABE4D" display_value="Orange"/>
+<EnumValue value="#FF5468" display_value="Red"/>
+<EnumValue value="custom" display_value="Custom (enter below)"/>
+</UserPref>
+<UserPref name="custom_text_colour" display_name="Custom Text Colour" default_value="#D9CB9E"/>
 <UserPref name="title_font_size" display_name="Title font size" default_value="20"/>
 <UserPref name="cell_font_size" display_name="Cell font size" default_value="140"/>
 <UserPref name="show_when_zero" display_name="Show when 0 ?" datatype="bool" default_value="true"/>
@@ -52,11 +59,15 @@
 		var prefs = new gadgets.Prefs();
 		var title_string = prefs.getString('title_string');	
 		var background_colour = prefs.getString('background_colour');	
-		var text_colour = prefs.getString('text_colour');	
+		var text_colour = prefs.getString('text_colour_selection');	
+		var custom_text_colour = prefs.getString('custom_text_colour');	
 		var title_font_size = prefs.getInt('title_font_size');
 		var cell_font_size = prefs.getInt('cell_font_size');
 		var show_when_zero = prefs.getInt('show_when_zero');
 
+		if(text_colour =="custom" ) {
+			text_colour = custom_text_colour;
+		}
 
 		var table_width = '100%';
 		var table_height = '100%';
