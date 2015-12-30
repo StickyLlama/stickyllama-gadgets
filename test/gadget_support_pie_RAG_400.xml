@@ -1,0 +1,100 @@
+<Module>
+<ModulePrefs title="Support Pie Gadget RAG 400px Height" description="Official Google Gadget. A simple table presenting the data of a table query result." author="Google Engineering" author_affiliation="Google Inc." author_email="visualization.api+simple-table@gmail.com" screenshot="https://www.google.com/ig/modules/simple-table.png" thumbnail="https://www.google.com/ig/modules/simple-table-thm.png">
+<Require feature="idi"/>
+<Require feature="locked-domain"/>
+</ModulePrefs>
+<UserPref name="title_string" display_name="Chart Title" required="false"/>
+<UserPref name="_table_query_url" display_name="Data source url" required="true"/>
+<UserPref name="_table_query_refresh_interval" display_name="Data refresh interval (minutes)" default_value="60" datatype="enum" required="false">
+<EnumValue value="0" display_value="Do not refresh"/>
+<EnumValue value="60" display_value="1"/>
+<EnumValue value="300" display_value="5"/>
+<EnumValue value="1800" display_value="30"/>
+</UserPref>
+<UserPref name="background_colour" display_name="Background Colour" default_value="#374140"/>
+<UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
+<UserPref name="title_font_size" display_name="Title font size" default_value="24"/>
+<UserPref name="cell_font_size" display_name="Cell font size" default_value="16"/>
+<UserPref name="rag_reverse" display_name="Reverse RAG colours" datatype="bool" default_value="false"/>
+<!--
+
+  This is a sample gadget, that uses the Google Visualization API to read data
+  from a data source, and displays it as an html table.
+  
+-->
+<Content type="html">
+<![CDATA[
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(sendQuery);
+
+    function sendQuery() {
+	  var prefs = new _IG_Prefs(); // User preferences
+	  gadgetHelper = new google.visualization.GadgetHelper();
+      var query = gadgetHelper.createQueryFromPrefs(prefs);	  
+      query.send(handleQueryResponse);
+    }
+
+    function handleQueryResponse(response) {
+		// Default error message handling
+		var gadgetHelper = new google.visualization.GadgetHelper();
+		if (!gadgetHelper.validateResponse(response))
+			return;
+
+		var dataFrom = response.getDataTable();
+		// Get user preferences
+		var prefs = new gadgets.Prefs();
+		var title_string = prefs.getString('title_string');	
+		var background_colour = prefs.getString('background_colour');	
+		var text_colour = prefs.getString('text_colour');	
+		var title_font_size = prefs.getInt('title_font_size');
+		var cell_font_size = prefs.getInt('cell_font_size');
+		var rag_reverse = prefs.getInt('rag_reverse');
+		
+		
+		var table_width = '100%';
+		var table_height = '100%';
+	
+		// Copy data 
+		data = response.getDataTable();         
+
+		// Set up styles
+		var legendStyle = {textStyle: {color:text_colour,fontSize: cell_font_size}};
+		var titleTextStyle = {color:text_colour,fontSize: title_font_size};
+    var colours_rag = ["4DFA90","FABE4D","FF5468"];
+    var colours_reverse_rag = ["FF5468","FABE4D","4DFA90"];
+    var pieSliceBorderColor = background_colour;
+		
+		var piecolours = colours_rag;
+		if (rag_reverse) {
+			piecolours = 	colours_reverse_rag;
+		}		
+		
+		var options = {
+			backgroundColor: background_colour,
+			legend:legendStyle,
+			titleTextStyle:titleTextStyle,
+			pieSliceText: 'value',
+			pieSliceTextStyle: {fontSize:32},
+			title: title_string,
+			colors: piecolours,
+			pieSliceBorderColor:pieSliceBorderColor,
+			pieHole: 0.4
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }	  
+	  
+    </script>
+	<div id="piechart" style="height: 400px;"></div>
+]]>
+</Content>
+</Module>
