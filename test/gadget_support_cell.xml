@@ -13,8 +13,8 @@
 </UserPref>
 <UserPref name="background_colour" display_name="Background Colour" default_value="#374140"/>
 <UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
-<UserPref name="title_font_size" display_name="Title font size" default_value="72"/>
-<UserPref name="cell_font_size" display_name="Cell font size" default_value="36"/>
+<UserPref name="title_font_size" display_name="Title font size" default_value="20"/>
+<UserPref name="cell_font_size" display_name="Cell font size" default_value="140"/>
 <UserPref name="show_when_zero" display_name="Show when 0 ?" datatype="bool" default_value="true"/>
 <!--
 
