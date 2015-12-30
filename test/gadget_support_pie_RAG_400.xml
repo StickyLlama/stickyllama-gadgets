@@ -55,7 +55,7 @@
 		var text_colour = prefs.getString('text_colour');	
 		var title_font_size = prefs.getInt('title_font_size');
 		var cell_font_size = prefs.getInt('cell_font_size');
-		var rag_reverse = prefs.getInt('rag_reverse');
+		var rag_reverse = prefs.getBool('rag_reverse');
 		
 		
 		var table_width = '100%';
@@ -72,7 +72,7 @@
     var pieSliceBorderColor = background_colour;
 		
 		var piecolours = colours_rag;
-		if (rag_reverse) {
+		if (rag_reverse == true) {
 			piecolours = 	colours_reverse_rag;
 		}		
 		
