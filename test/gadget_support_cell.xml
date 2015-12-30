@@ -20,6 +20,7 @@
 <EnumValue value="custom" display_value="Custom (enter below)"/>
 </UserPref>
 <UserPref name="custom_text_colour" display_name="Custom Text Colour" default_value="#D9CB9E"/>
+<UserPref name="title_text_colour" display_name="Title Text Colour" default_value="#D9CB9E"/>
 <UserPref name="title_font_size" display_name="Title font size" default_value="20"/>
 <UserPref name="cell_font_size" display_name="Cell font size" default_value="140"/>
 <UserPref name="show_when_zero" display_name="Show when 0 ?" datatype="bool" default_value="true"/>
@@ -61,6 +62,7 @@
 		var background_colour = prefs.getString('background_colour');	
 		var text_colour = prefs.getString('text_colour_selection');	
 		var custom_text_colour = prefs.getString('custom_text_colour');	
+		var title_text_colour = prefs.getString('title_text_colour');
 		var title_font_size = prefs.getInt('title_font_size');
 		var cell_font_size = prefs.getInt('cell_font_size');
 		var show_when_zero = prefs.getInt('show_when_zero');
@@ -84,7 +86,7 @@
 		var fontSizeCell = ' font-size:'+cell_font_size+'px;';
 		var fontSizeTitle = ' font-size:'+title_font_size+'px;';
 
-		var fontColourTitle = ' color: '+text_colour+';';		
+		var fontColourTitle = ' color: '+title_text_colour+';';		
 		if (!show_when_zero && fieldValue == 0) {
 			text_colour = 	background_colour;
 		}				
