@@ -15,6 +15,7 @@
 <UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
 <UserPref name="title_font_size" display_name="Title font size" default_value="24"/>
 <UserPref name="cell_font_size" display_name="Cell font size" default_value="16"/>
+<UserPref name="visibilty_threshold" display_name="Visibility threshhold" default_value="1.0"/>
 <!--
 
   This is a sample gadget, that uses the Google Visualization API to read data
@@ -54,6 +55,7 @@
 		var text_colour = prefs.getString('text_colour');	
 		var title_font_size = prefs.getInt('title_font_size');
 		var cell_font_size = prefs.getInt('cell_font_size');
+		var visibilty_threshold = prefs.getFloat('visibilty_threshold');
 		
 		var table_width = '100%';
 		var table_height = '100%';
@@ -80,6 +82,7 @@
 			title: title_string,
 			colors: colours_pagedividersextended,
 			pieSliceBorderColor:pieSliceBorderColor,
+			sliceVisibilityThreshold: visibilty_threshold,
 			pieHole: 0.4
         };
 
