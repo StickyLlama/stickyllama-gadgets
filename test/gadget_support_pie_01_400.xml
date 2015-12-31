@@ -15,7 +15,7 @@
 <UserPref name="text_colour" display_name="Text Colour" default_value="#D9CB9E"/>
 <UserPref name="title_font_size" display_name="Title font size" default_value="24"/>
 <UserPref name="cell_font_size" display_name="Cell font size" default_value="16"/>
-<UserPref name="visibilty_threshold" display_name="Visibility threshhold" default_value="0.00"/>
+<UserPref name="visibilty_threshold" display_name="Visibility threshhold (0.0 - 1.0)" default_value="0.00"/>
 <!--
 
   This is a sample gadget, that uses the Google Visualization API to read data
