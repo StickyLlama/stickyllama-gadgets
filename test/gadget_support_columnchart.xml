@@ -80,7 +80,7 @@
 		var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 		chart.draw(data, options);
     }	  
-	<div id="chart_div" style=""></div>	  
+	<div id="chart_div"></div>	  
     </script>
 ]]>
 </Content>
