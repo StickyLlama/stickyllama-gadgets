@@ -16,7 +16,6 @@
 <UserPref name="bar_colour" display_name="Bar Colour" default_value="#8DDC31"/>
 <UserPref name="chartarea_left" display_name="Width of Bar Description (px)" default_value="120"/>
 <!--
-
   This is a sample gadget, that uses the Google Visualization API to read data
   from a data source, and displays it as an html table.
   
@@ -26,26 +25,21 @@
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
-
       // Set a callback to run when the Google Visualization API is loaded.
       google.setOnLoadCallback(sendQuery);
-
     function sendQuery() {
 	  var prefs = new _IG_Prefs(); // User preferences
 	  gadgetHelper = new google.visualization.GadgetHelper();
       var query = gadgetHelper.createQueryFromPrefs(prefs);	  
       query.send(handleQueryResponse);
     }
-
     function handleQueryResponse(response) {
 		// Default error message handling
 		var gadgetHelper = new google.visualization.GadgetHelper();
 		if (!gadgetHelper.validateResponse(response))
 			return;
-
 		var data = response.getDataTable();
 		// Get user preferences
 		var prefs = new gadgets.Prefs();
@@ -54,7 +48,6 @@
 		var text_colour = prefs.getString('text_colour');	
 		var bar_colour = prefs.getString('bar_colour');	
 		var chartarea_left = prefs.getInt('chartarea_left');	
-
 		// Setup Options
 		var options = {
 			'title': title_string,
@@ -80,8 +73,9 @@
 		var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 		chart.draw(data, options);
     }	  
-	<div id="chart_div" style="height: 500px;"></div>	  
+	  
     </script>
+	<div id="chart_div" style="height: 300px;"></div>
 ]]>
 </Content>
 </Module>
