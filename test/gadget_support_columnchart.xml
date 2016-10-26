@@ -75,7 +75,7 @@
     }	  
 	  
     </script>
-	<div id="chart_div" style="height: 900px;width: 1000px;"></div>
+	<div id="chart_div" style="height: 900px;width: 1500px;"></div>
 ]]>
 </Content>
 </Module>
