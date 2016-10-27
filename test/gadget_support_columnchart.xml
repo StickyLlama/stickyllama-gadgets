@@ -51,8 +51,8 @@
 		var bar_colour = prefs.getString('bar_colour');	
 		var chartarea_left = prefs.getInt('chartarea_left');	
 
-		var haxis_title: prefs.getString('haxis_title');	
-          	var haxis_format: prefs.getString('haxis_format');	
+		var haxis_title = prefs.getString('haxis_title');	
+          	var haxis_format = prefs.getString('haxis_format');	
 
 		// Setup Options
 		var options = {
