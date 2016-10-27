@@ -68,7 +68,7 @@
 			    top: chartarea_top,	
 			    width: chartarea_width,
 			    height: chartarea_height
-			}
+			},
 			colors: [bar_colour,'#FFA700'],
 			bar: { groupWidth: '95%' },
 			vAxis: {
