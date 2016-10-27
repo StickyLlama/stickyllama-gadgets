@@ -71,6 +71,8 @@
 			hAxis: {
 				gridlines: {color: text_colour},
 				baselineColor: text_colour,
+          			title: haxis_title,
+          			format: haxis_format,
 				textStyle: { color: text_colour }
 			}		  
         };
