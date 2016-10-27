@@ -50,6 +50,9 @@
 		var text_colour = prefs.getString('text_colour');	
 		var bar_colour = prefs.getString('bar_colour');	
 		var chartarea_left = prefs.getInt('chartarea_left');	
+		var chartarea_top = 10;
+		var chartarea_width = 1200;
+		var chartarea_height = 800;
 
 		var haxis_title = prefs.getString('haxis_title');	
           	var haxis_format = prefs.getString('haxis_format');	
@@ -60,7 +63,12 @@
 			titleTextStyle : { color: text_colour },
 			legend: { position: "none" },
 			'backgroundColor': background_colour,
-			chartArea: { left: chartarea_left } ,
+			chartArea: {
+			    left: chartarea_left,
+			    top: chartarea_top,	
+			    width: chartarea_width,
+			    height: chartarea_height
+			}
 			colors: [bar_colour,'#FFA700'],
 			bar: { groupWidth: '95%' },
 			vAxis: {
@@ -71,6 +79,7 @@
 			hAxis: {
 				gridlines: {color: text_colour},
 				baselineColor: text_colour,
+				titleTextStyle: {color: text_colour},
           			title: haxis_title,
           			format: haxis_format,
 				textStyle: { color: text_colour }
