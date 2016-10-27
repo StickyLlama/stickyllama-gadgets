@@ -17,6 +17,9 @@
 <UserPref name="haxis_title" display_name="hAxis Title" default_value="Date"/>
 <UserPref name="haxis_format" display_name="hAxis Format" default_value="dd/MM"/>
 <UserPref name="chartarea_left" display_name="Width of Bar Description (px)" default_value="120"/>
+<UserPref name="chartarea_top" display_name="Distance of chart from top border (px)" default_value="10"/>
+<UserPref name="chartarea_width" display_name="Width of Chart (px)" default_value="1200"/>
+<UserPref name="chartarea_height" display_name="Height of Chart (px)" default_value="900"/>
 <!--
   This is a sample gadget, that uses the Google Visualization API to read data
   from a data source, and displays it as an html table.
@@ -50,9 +53,9 @@
 		var text_colour = prefs.getString('text_colour');	
 		var bar_colour = prefs.getString('bar_colour');	
 		var chartarea_left = prefs.getInt('chartarea_left');	
-		var chartarea_top = 10;
-		var chartarea_width = 1200;
-		var chartarea_height = 800;
+		var chartarea_top = prefs.getInt('chartarea_top');
+		var chartarea_width = prefs.getInt('chartarea_width');
+		var chartarea_height = prefs.getInt('chartarea_height');
 
 		var haxis_title = prefs.getString('haxis_title');	
           	var haxis_format = prefs.getString('haxis_format');	
