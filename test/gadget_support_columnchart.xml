@@ -20,6 +20,14 @@
 <UserPref name="chartarea_top" display_name="Distance of chart from top border (px)" default_value="10"/>
 <UserPref name="chartarea_width" display_name="Width of Chart (px)" default_value="1200"/>
 <UserPref name="chartarea_height" display_name="Height of Chart (px)" default_value="900"/>
+<UserPref name="show_trendline" display_name="Display trendline ?" datatype="bool" default_value="true"/>
+<UserPref name="trendline_colour_selection" display_name="Trendline Colour" default_value="#D9CB9E" datatype="enum" required="false">
+<EnumValue value="#D9CB9E" display_value="Default"/>
+<EnumValue value="#4DFA90" display_value="Green"/>
+<EnumValue value="#FABE4D" display_value="Orange"/>
+<EnumValue value="#FF5468" display_value="Red"/>
+</UserPref>
+
 <!--
   This is a sample gadget, that uses the Google Visualization API to read data
   from a data source, and displays it as an html table.
@@ -60,35 +68,42 @@
 		var haxis_title = prefs.getString('haxis_title');	
           	var haxis_format = prefs.getString('haxis_format');	
 
+		var show_trendline = prefs.getInt('show_trendline');
+		var trendline_colour = prefs.getString('trendline_colour_selection');
+
 		// Setup Options
 		var options = {
-			'title': title_string,
-			titleTextStyle : { color: text_colour },
-			legend: { position: "none" },
-			'backgroundColor': background_colour,
-			chartArea: {
-			    left: chartarea_left,
-			    top: chartarea_top,	
-			    width: chartarea_width,
-			    height: chartarea_height
-			},
-			colors: [bar_colour,'#FFA700'],
-			bar: { groupWidth: '95%' },
-			vAxis: {
-				gridlines: {color: text_colour},
-				baselineColor: text_colour,
-				textStyle: { color: text_colour }
-			},
-			hAxis: {
-				gridlines: {color: text_colour},
-				baselineColor: text_colour,
-				titleTextStyle: {color: text_colour},
-          			title: haxis_title,
-          			format: haxis_format,
-				textStyle: { color: text_colour }
-			}		  
-        };
+					'title': title_string,
+					titleTextStyle : { color: text_colour },
+					legend: { position: "none" },
+					'backgroundColor': background_colour,
+					chartArea: {
+					    left: chartarea_left,
+					    top: chartarea_top,	
+					    width: chartarea_width,
+					    height: chartarea_height
+					},
+					colors: [bar_colour,'#FFA700'],
+					bar: { groupWidth: '95%' },
+					vAxis: {
+						gridlines: {color: text_colour},
+						baselineColor: text_colour,
+						textStyle: { color: text_colour }
+					},
+					hAxis: {
+						gridlines: {color: text_colour},
+						baselineColor: text_colour,
+						titleTextStyle: {color: text_colour},
+						title: haxis_title,
+						format: haxis_format,
+						textStyle: { color: text_colour }
+					}		  
+        			};
 		
+		if (show_trendline) {
+			options["trendlines"] = { 0: {color: trendline_colour} };			
+		}		
+
 		// Get and Draw Chart
 		var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 		chart.draw(data, options);
