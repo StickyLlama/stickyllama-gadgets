@@ -98,7 +98,7 @@
 						format: haxis_format,
 						textStyle: { color: text_colour }
 					},
-					trendlines: { 0: {color: trendline_colour,lineWidth: 20} }
+					trendlines: { 0: {color: trendline_colour} }
         			};
 		
 		if (show_trendline) {
