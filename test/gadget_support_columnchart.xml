@@ -68,7 +68,7 @@
 		var haxis_title = prefs.getString('haxis_title');	
           	var haxis_format = prefs.getString('haxis_format');	
 
-		var show_trendline = prefs.getInt('show_trendline');
+		var show_trendline = prefs.getBool('show_trendline');
 		var trendline_colour = prefs.getString('trendline_colour_selection');
 
 		// Setup Options
@@ -99,11 +99,11 @@
 						textStyle: { color: text_colour}
 					}
         			};
-		if (show_trendline == 1) {
+		if (show_trendline) {
 			options["trendlines"] = { 0: {color: 'green',lineWidth: 5} };			
 		}
-		if (show_trendline == 0) {
-			options["trendlines"] = { 0: {color: 'blue',lineWidth: 5} };			
+		if (!show_trendline) {
+			options["trendlines"] = { 0: {color: 'red',lineWidth: 5} };			
 		}
 
 		// Get and Draw Chart
