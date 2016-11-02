@@ -97,13 +97,11 @@
 						title: haxis_title,
 						format: haxis_format,
 						textStyle: { color: text_colour}
-					},
-					trendlines: { 0: {color: '#FF5468', lineWidth: 5} }
+					}
         			};
 		
-		if (show_trendline) {
-			options["trendlines"] = { 0: {color: trendline_colour,lineWidth: 20} };			
-		}	
+		options["trendlines"] = { 0: {color: trendline_colour,lineWidth: 5} };			
+
 
 		// Get and Draw Chart
 		var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
