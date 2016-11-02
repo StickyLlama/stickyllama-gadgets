@@ -96,9 +96,9 @@
 						titleTextStyle: {color: text_colour},
 						title: haxis_title,
 						format: haxis_format,
-						textStyle: { color: text_colour,lineWidth: 20 }
+						textStyle: { color: text_colour}
 					},
-					trendlines: { 0: {color: trendline_colour} }
+					trendlines: { 0: {color: trendline_colour, lineWidth: 20} }
         			};
 		
 		if (show_trendline) {
