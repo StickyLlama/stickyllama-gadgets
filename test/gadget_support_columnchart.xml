@@ -99,11 +99,11 @@
 						textStyle: { color: text_colour}
 					}
         			};
-		if (show_trendline) {
+		if (show_trendline == 1) {
 			options["trendlines"] = { 0: {color: 'green',lineWidth: 5} };			
 		}
-		if (!show_trendline) {
-			options["trendlines"] = { 0: {color: 'red',lineWidth: 5} };			
+		if (show_trendline == 0) {
+			options["trendlines"] = { 0: {color: 'blue',lineWidth: 5} };			
 		}
 
 		// Get and Draw Chart
