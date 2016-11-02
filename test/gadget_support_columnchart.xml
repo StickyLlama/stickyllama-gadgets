@@ -96,7 +96,7 @@
 						titleTextStyle: {color: text_colour},
 						title: haxis_title,
 						format: haxis_format,
-						textStyle: { color: text_colour,lineWidth: 10 }
+						textStyle: { color: text_colour,lineWidth: 20 }
 					},
 					trendlines: { 0: {color: trendline_colour} }
         			};
